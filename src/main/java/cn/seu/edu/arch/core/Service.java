@@ -1,4 +1,4 @@
-package com.company.project.core;
+package cn.seu.edu.arch.core;
 
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import tk.mybatis.mapper.entity.Condition;

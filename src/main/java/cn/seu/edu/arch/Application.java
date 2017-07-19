@@ -1,4 +1,4 @@
-package com.company.project;
+package cn.seu.edu.arch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,7 +1,7 @@
-package com.conpany.project;
+package cn.seu.edu.arch;
 
 
-import com.company.project.Application;
+import cn.seu.edu.arch.Application;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
