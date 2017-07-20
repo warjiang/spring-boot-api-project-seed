@@ -1,12 +1,12 @@
 package cn.seu.edu.arch.jwt;
 
-import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-
 /**
  * Author by dingwj@seu.edu.cn on 2017/7/19.
  */
-public class JsonWebTokenAuthentication extends AbstractAuthenticationToken {
+public class JsonWebTokenAuthentication {}
+
+    /*
+        extends AbstractAuthenticationToken {
     private static final long serialVersionUID = -6855809445272533821L;
     private UserDetails principal;
     private String jsonWebToken;
@@ -32,3 +32,4 @@ public class JsonWebTokenAuthentication extends AbstractAuthenticationToken {
         return jsonWebToken;
     }
 }
+*/

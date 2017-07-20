@@ -1,26 +1,36 @@
 package cn.seu.edu.arch.web;
+
 import cn.seu.edu.arch.core.Result;
 import cn.seu.edu.arch.core.ResultGenerator;
+import cn.seu.edu.arch.jwt.AuthTokenDTO;
+import cn.seu.edu.arch.jwt.AuthTokenDetails;
+import cn.seu.edu.arch.jwt.JsonWebTokenUtility;
 import cn.seu.edu.arch.model.User;
-import cn.seu.edu.arch.service.UserService;
+import cn.seu.edu.arch.service.impl.UserServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by CodeGenerator on 2017/07/18.
-*/
+ * Created by CodeGenerator on 2017/07/20.
+ */
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
     @Resource
-    private UserService userService;
+    private UserServiceImpl userService;
+
+    @Autowired
+    private JsonWebTokenUtility tokenService;
+
+    //@Autowired
+    //private JsonWebTokenAuthenticationProvider tokenProvider;
 
     @PostMapping("/add")
     public Result add(User user) {
@@ -52,5 +62,25 @@ public class UserController {
         List<User> list = userService.findAll();
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
+    }
+
+    @PostMapping("/login")
+    public Result login(@RequestBody User user) {
+        AuthTokenDTO authTokenDTO = new AuthTokenDTO();
+        String token;
+        User u = null;
+        if (user.getUsername() != null && user.getPassword() != null) {
+            u = userService.getUserByNamePassword(user.getUsername(), user.getPassword());
+        }
+        if (u != null) {
+            authTokenDTO.setUserId(u.getUserId());
+            token = tokenService.generateJSONWebToken(String.valueOf(u.getUserId()));
+        } else {
+            authTokenDTO.setUserId(-1);
+            token = tokenService.generateJSONWebToken("-1");
+        }
+
+        authTokenDTO.setToken(token);
+        return ResultGenerator.genSuccessResult(authTokenDTO);
     }
 }

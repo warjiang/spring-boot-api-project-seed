@@ -1,0 +1,33 @@
+app:
+  name: arch
+  user_cookie: c_user
+
+spring:
+  profiles:
+    active: dev
+  mvc:
+    # 404 交给异常处理器处理
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: true
+# 所有环境通用的配置，放在这里
+qiniu:
+  accessKey: b2cjWlox-DWUzF_7iGA2I1BAlD9lONBTUMY22wxu
+  secretKey: 7qsoCQzLxxGCPHMwcSSkd0fn4QGz0rwDneXkXAop
+  bucket: archimg
+
+authorizeURLLists:
+  # S
+  studentURLList:
+    /qiniu/generateUpToken,
+    /user/list
+  # T
+  teacherURLList:
+    /qiniu/generateUpToken
+  # A
+  adminURLList:
+    /qiniu/generateUpToken
+  publicURLList:
+    /user/login,
+    /logout,
+    /index,

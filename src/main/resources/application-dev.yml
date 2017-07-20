@@ -1,0 +1,26 @@
+# 开发环境配置
+# 数据源配置，请修改为你项目的实际配置
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/archapp?useUnicode=true&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+
+jwt:
+  header: Authorization
+  expires_in: 600 # 10 minutes
+  secret: archapp
+  cookie: AUTH-TOKEN
+
+logging:
+  level:
+    ROOT: INFO
+    org.apache: INFO
+    org.springframework: INFO
+    org.springframework.data.mongodb: DEBUG
+    java.sql.Connection: DEBUG
+    java.sql.Statement: DEBUG
+    org.mongodb.driver: INFO
+    cn.seu.edu.arch: DEBUG
+

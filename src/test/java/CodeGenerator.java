@@ -16,7 +16,7 @@ import static cn.seu.edu.arch.core.ProjectConstant.*;
  */
 public class CodeGenerator {
     //JDBC配置，请修改为你项目的实际配置
-    private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/test";
+    private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/archapp?useUnicode=true&useSSL=false";
     private static final String JDBC_USERNAME = "root";
     private static final String JDBC_PASSWORD = "123456";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
@@ -35,7 +35,10 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());//@date
 
     public static void main(String[] args) {
-        genCode("user");
+
+        //genCode("user");
+        genService("Qiniu");
+        genController("Qiniu");
     }
 
     public static void genCode(String... tableNames) {

@@ -11,10 +11,9 @@ import java.util.List;
 
 @Data
 public class AuthTokenDetails {
-    private Long id;// 用户ID
-    private String username;// 用户登录名
-    private String ip;// 用户IP
-
+    private Integer userId;// 用户ID
+    private String userName;// 用户登录名
+    //private String ip;// 用户IP
     private List<String> roleNames;
     private Date expirationDate;
 }
