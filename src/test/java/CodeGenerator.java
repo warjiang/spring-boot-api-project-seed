@@ -36,9 +36,9 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
 
-        //genCode("user");
-        genService("Qiniu");
-        genController("Qiniu");
+        genCode("questions");
+        //genService("Qiniu");
+        //genController("Qiniu");
     }
 
     public static void genCode(String... tableNames) {
