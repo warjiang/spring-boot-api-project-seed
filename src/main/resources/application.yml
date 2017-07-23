@@ -16,12 +16,33 @@ qiniu:
   secretKey: 7qsoCQzLxxGCPHMwcSSkd0fn4QGz0rwDneXkXAop
   bucket: archimg
 
+wxpay:
+  APP_ID: wxd578b8e7378184d7
+  APP_SECRET: b562718cc1d615125984aea3c5fcaa76
+  APP_KEY: APP_KEY
+  MCH_ID: 1482438292
+  URL_UNIFIED_ORDER: https://api.mch.weixin.qq.com/pay/unifiedorder
+  URL_NOTIFY: http://118.89.156.219/
+  TIME_FORMAT: yyyyMMddHHmmss
+  TIME_EXPIRE: 2
+
+QCloudSMS:
+  APP_ID: 1400023655
+  APP_KEY: 71ed6a77a532978f3a4bf42bc759cb2e
+  URL: https://yun.tim.qq.com/v5/tlssmssvr/sendsms
+
+
 authorizeURLLists:
   # S
   studentURLList:
     /qiniu/generateUpToken,
     /questions/list,
-    /user/list
+    /questions/detail,
+    /category/list,
+    /category/listCategoryL2,
+    /category/getCategoryL3ByL2,
+    /wechat/prePay,
+    /user/updateProfile
   # T
   teacherURLList:
     /qiniu/generateUpToken
@@ -30,5 +51,4 @@ authorizeURLLists:
     /qiniu/generateUpToken
   publicURLList:
     /user/login,
-    /logout,
-    /index,
+    /wechat/registerByCode

@@ -1,8 +1,8 @@
 package cn.seu.edu.arch.web;
 import cn.seu.edu.arch.core.Result;
 import cn.seu.edu.arch.core.ResultGenerator;
-import cn.seu.edu.arch.model.Questions;
-import cn.seu.edu.arch.service.QuestionsService;
+import cn.seu.edu.arch.model.Collections;
+import cn.seu.edu.arch.service.CollectionsService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,42 +14,42 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by CodeGenerator on 2017/07/21.
+* Created by CodeGenerator on 2017/07/23.
 */
 @RestController
-@RequestMapping("/questions")
-public class QuestionsController {
+@RequestMapping("/collections")
+public class CollectionsController {
     @Resource
-    private QuestionsService questionsService;
+    private CollectionsService collectionsService;
 
     @PostMapping("/add")
-    public Result add(Questions questions) {
-        questionsService.save(questions);
+    public Result add(Collections collections) {
+        collectionsService.save(collections);
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/delete")
     public Result delete(@RequestParam Integer id) {
-        questionsService.deleteById(id);
+        collectionsService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/update")
-    public Result update(Questions questions) {
-        questionsService.update(questions);
+    public Result update(Collections collections) {
+        collectionsService.update(collections);
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/detail")
     public Result detail(@RequestParam Integer id) {
-        Questions questions = questionsService.findById(id);
-        return ResultGenerator.genSuccessResult(questions);
+        Collections collections = collectionsService.findById(id);
+        return ResultGenerator.genSuccessResult(collections);
     }
 
     @PostMapping("/list")
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
-        List<Questions> list = questionsService.findAll();
+        List<Collections> list = collectionsService.findAll();
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
     }

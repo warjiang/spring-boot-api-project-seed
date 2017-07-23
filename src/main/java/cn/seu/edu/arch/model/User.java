@@ -1,9 +1,6 @@
 package cn.seu.edu.arch.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class User {
     /**
@@ -16,8 +13,11 @@ public class User {
     /**
      * 手机号码 主键 用户填入手机号码之后可以访问更多资源
      */
+    //@Id
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    private String openid;
 
     /**
      * 用户名
@@ -88,6 +88,20 @@ public class User {
     }
 
     /**
+     * @return openid
+     */
+    public String getOpenid() {
+        return openid;
+    }
+
+    /**
+     * @param openid
+     */
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
+
+    /**
      * 获取用户名
      *
      * @return username - 用户名
@@ -146,18 +160,8 @@ public class User {
      *
      * @return role - 用户角色，目前包括 T(eacher)、S(tudent)、A(dmin)、V(isitor).角色用逗号分隔
      */
-    public String getRole(){
+    public String getRole() {
         return role;
-    }
-
-    public List<String> getRoleList() {
-        ArrayList<String> roles = new ArrayList<>();
-        if (role == null || role.length() == 0){
-            return roles;
-        }
-        String[] roleArray = role.split(",");
-        roles.addAll(Arrays.asList(roleArray));
-        return roles;
     }
 
     /**

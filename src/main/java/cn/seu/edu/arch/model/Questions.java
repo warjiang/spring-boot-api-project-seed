@@ -26,22 +26,22 @@ public class Questions {
     private Integer year;
 
     /**
-     * 一级目录 园林、建筑
+     * 一级分类
      */
     @Column(name = "categoryL1")
     private String categoryl1;
 
     /**
-     * 二级目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
+     * 二级目录 试题的属目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
      */
     @Column(name = "categoryL2")
-    private String categoryl2;
+    private Integer categoryl2;
 
     /**
-     * 三级目录：试题所属章节
+     * 三级目录 试题所属章节
      */
     @Column(name = "categoryL3")
-    private String categoryl3;
+    private Integer categoryl3;
 
     /**
      * 试题考点
@@ -54,9 +54,9 @@ public class Questions {
     private String difficultpoint;
 
     /**
-     * 题目
+     * 试题
      */
-    private String title;
+    private String question;
 
     /**
      * 答案JSON
@@ -146,56 +146,56 @@ public class Questions {
     }
 
     /**
-     * 获取一级目录 园林、建筑
+     * 获取一级分类
      *
-     * @return categoryL1 - 一级目录 园林、建筑
+     * @return categoryL1 - 一级分类
      */
     public String getCategoryl1() {
         return categoryl1;
     }
 
     /**
-     * 设置一级目录 园林、建筑
+     * 设置一级分类
      *
-     * @param categoryl1 一级目录 园林、建筑
+     * @param categoryl1 一级分类
      */
     public void setCategoryl1(String categoryl1) {
         this.categoryl1 = categoryl1;
     }
 
     /**
-     * 获取二级目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
+     * 获取二级目录 试题的属目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
      *
-     * @return categoryL2 - 二级目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
+     * @return categoryL2 - 二级目录 试题的属目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
      */
-    public String getCategoryl2() {
+    public Integer getCategoryl2() {
         return categoryl2;
     }
 
     /**
-     * 设置二级目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
+     * 设置二级目录 试题的属目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
      *
-     * @param categoryl2 二级目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
+     * @param categoryl2 二级目录 试题的属目录,1:中建,2外建,3:物理,4:构造,5:结构,6:现代
      */
-    public void setCategoryl2(String categoryl2) {
+    public void setCategoryl2(Integer categoryl2) {
         this.categoryl2 = categoryl2;
     }
 
     /**
-     * 获取三级目录：试题所属章节
+     * 获取三级目录 试题所属章节
      *
-     * @return categoryL3 - 三级目录：试题所属章节
+     * @return categoryL3 - 三级目录 试题所属章节
      */
-    public String getCategoryl3() {
+    public Integer getCategoryl3() {
         return categoryl3;
     }
 
     /**
-     * 设置三级目录：试题所属章节
+     * 设置三级目录 试题所属章节
      *
-     * @param categoryl3 三级目录：试题所属章节
+     * @param categoryl3 三级目录 试题所属章节
      */
-    public void setCategoryl3(String categoryl3) {
+    public void setCategoryl3(Integer categoryl3) {
         this.categoryl3 = categoryl3;
     }
 
@@ -236,21 +236,21 @@ public class Questions {
     }
 
     /**
-     * 获取题目
+     * 获取试题
      *
-     * @return title - 题目
+     * @return question - 试题
      */
-    public String getTitle() {
-        return title;
+    public String getQuestion() {
+        return question;
     }
 
     /**
-     * 设置题目
+     * 设置试题
      *
-     * @param title 题目
+     * @param question 试题
      */
-    public void setTitle(String title) {
-        this.title = title;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     /**

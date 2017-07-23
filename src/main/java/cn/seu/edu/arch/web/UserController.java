@@ -7,13 +7,18 @@ import cn.seu.edu.arch.jwt.AuthTokenDetails;
 import cn.seu.edu.arch.jwt.JsonWebTokenUtility;
 import cn.seu.edu.arch.model.User;
 import cn.seu.edu.arch.service.impl.UserServiceImpl;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.github.kevinsawicki.http.HttpRequest;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sun.org.apache.regexp.internal.RE;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -45,10 +50,47 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public Result update(User user) {
+    public Result update(User user, HttpServletRequest request) {
+        String userId = tokenService.parseAndGetUserId(tokenService.getToken(request));
+        if (userId == null || userId.length() == 0) {
+            return ResultGenerator.genFailResult("为登录用户");
+        }
+        user.setUserId(Integer.valueOf(userId));
         userService.update(user);
         return ResultGenerator.genSuccessResult();
     }
+
+    @PostMapping("/updateProfile")
+    public Result updateProfile(@RequestParam String profile, HttpServletRequest request) {
+        String userId = tokenService.parseAndGetUserId(tokenService.getToken(request));
+        if (userId == null || userId.length() == 0) {
+            return ResultGenerator.genFailResult("为登录用户");
+        }
+        JSONObject object = (JSONObject) JSON.parse(profile);
+        String phoneNumber = "";
+        String oldSchool = "";
+        String targetSchool = "";
+        if (object.get("phoneNumber") != null) {
+            phoneNumber = String.valueOf(object.get("phoneNumber"));
+        }
+        if (object.get("oldSchool") != null) {
+            oldSchool = String.valueOf(object.get("oldSchool"));
+        }
+        if (object.get("targetSchool") != null) {
+            targetSchool = String.valueOf(object.get("targetSchool"));
+        }
+        log.info("phoneNumber:\t" + phoneNumber);
+        log.info("oldSchool:\t" + oldSchool);
+        log.info("targetSchool:\t" + targetSchool);
+        User user = new User();
+        user.setUserId(Integer.valueOf(userId));
+        user.setPhoneNumber(phoneNumber);
+        user.setOldSchool(oldSchool);
+        user.setTargetSchool(targetSchool);
+        userService.update(user);
+        return ResultGenerator.genSuccessResult("用户信息更新成功");
+    }
+
 
     @PostMapping("/detail")
     public Result detail(@RequestParam Integer id) {

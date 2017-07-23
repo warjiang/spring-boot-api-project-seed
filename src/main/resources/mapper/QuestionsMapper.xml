@@ -10,11 +10,11 @@
     <result column="school" jdbcType="VARCHAR" property="school" />
     <result column="year" jdbcType="INTEGER" property="year" />
     <result column="categoryL1" jdbcType="VARCHAR" property="categoryl1" />
-    <result column="categoryL2" jdbcType="VARCHAR" property="categoryl2" />
-    <result column="categoryL3" jdbcType="VARCHAR" property="categoryl3" />
+    <result column="categoryL2" jdbcType="INTEGER" property="categoryl2" />
+    <result column="categoryL3" jdbcType="INTEGER" property="categoryl3" />
     <result column="point" jdbcType="VARCHAR" property="point" />
     <result column="difficultpoint" jdbcType="VARCHAR" property="difficultpoint" />
-    <result column="title" jdbcType="LONGVARCHAR" property="title" />
+    <result column="question" jdbcType="LONGVARCHAR" property="question" />
     <result column="choices" jdbcType="LONGVARCHAR" property="choices" />
     <result column="answer" jdbcType="LONGVARCHAR" property="answer" />
     <result column="explanation" jdbcType="LONGVARCHAR" property="explanation" />
